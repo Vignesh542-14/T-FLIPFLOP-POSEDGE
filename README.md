@@ -1,4 +1,6 @@
-# T-FLIPFLOP-POSEDGE
+### NAME:VIGNESH P
+### REG NO:24900856
+### EXPERIMENT: T-FLIPFLOP-POSEDGE
 
 **AIM:**
 
@@ -27,59 +29,42 @@ Here, Qtt & Qt+1t+1 are present state & next state respectively. So, T flip-flop
 From the above characteristic table, we can directly write the next state equation as Q(t+1)=T′Q(t)+TQ(t)′ ⇒Q(t+1)=T⊕Q(t)
 
 **Procedure**
+1 Type the program in Quartus software
+2 Compile and run the programe
+3 Generate the RTL schematic and save the logic diagram
+4 Create nodes for inputs and outputs to generate the timing diagram.
+5 For different input combinations generate the timing diagram programe.
 
-1.Define Module: Define a Verilog module for the T flip-flop with inputs (T, CLK) and outputs (Q, Q_bar).
-
-2.Declare Inputs and Outputs: Declare input and output ports for the module.
-
-3.Implement Flip-Flop Logic: Write Verilog code to implement the T flip-flop logic based on its functional table. Use a synchronous always @(posedge CLK) block to trigger the flip-flop on the positive edge of the clock signal.
-
-4.Simulate Using Testbench: Write a Verilog testbench to simulate the behavior of the T flip-flop under different input conditions.
-
-5.Apply Input Stimuli: In the testbench, apply various combinations of input stimuli (T, CLK) to cover all possible input states.
-
-6.Verify Output Behavior: Verify that the output behavior of the T flip-flop matches the expected behavior defined by its functional table.
-
-7.Check for Race Conditions: Ensure that there are no race conditions or undefined states in the design by analyzing the timing and sequence of input changes.
-
-
+/* write all the steps invloved */
 
 **PROGRAM**
-```
-Program for flipflops and verify its truth table in quartus using Verilog programming.
-Developed by:p.vignesh
-RegisterNumber:24900856
-```
 
-```verilog
-module TFLIPFLOPPOSEDGE( input clk, rst_n, input t,
-output reg q,
-output q_bar
-);
-always@(posedge clk) 
-begin 
-if(!rst_n)
-q<=0;
-else
-if(t)
-q<=~q;
-else
-q<=q;
-end
-assign q_bar = ~q;
+module t_ff_ (t, clk, rst, q);
+  input t, clk, rst;
+  output reg q;
+
+  always @(posedge clk or posedge rst) 
+begin
+    if (rst)
+      q <= 0; // Reset the flip-flop
+    else if (t==0)
+      q <= q; 
+     else
+        q<=~q;
+  end
 endmodule
-```
+
+
+
 
 **RTL LOGIC FOR FLIPFLOPS**
 
-
-![image](https://github.com/23004513/T-FLIPFLOP-POSEDGE/assets/138973069/35b6a3a6-9937-43bc-b147-6ce8a87dfe63)
+![image](https://github.com/user-attachments/assets/a3223c9c-30fb-49c4-bb89-3cbd7d7ff944)
 
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
-
-![image](https://github.com/23004513/T-FLIPFLOP-POSEDGE/assets/138973069/73ee8589-58a0-4446-be72-67c2760de6de)
+![image](https://github.com/user-attachments/assets/c5f5fb02-b6c3-42ec-bd64-d4a2c2b0eacb)
 
 
 **RESULTS**
